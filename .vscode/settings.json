@@ -1,0 +1,7 @@
+{
+    "CodeGPT.apiKey": "CodeGPT Plus",
+    "vite.browserType": "system",
+    "vite.devCommand": "npm dev",
+    "vite.https": true,
+    "vite.showTerminal": true
+}

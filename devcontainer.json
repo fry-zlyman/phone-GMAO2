@@ -1,0 +1,21 @@
+{
+  "name": "Docker in Docker",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+
+  "features": {
+  "name": "Alice",
+  "age": 30,
+  "isStudent": false,
+  "courses": ["Math", "Science", "History"]
+}
+
+  ,"customizations": {
+    "vscode": {
+      "extensions": [
+        "react.reactjs",
+        "ms-vscode.js-debug" // Add this extension for JavaScript debugging
+      ]
+    }
+  }
+}

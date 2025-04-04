@@ -1,27 +1,31 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext';
+import { useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import './App.css';
 
-const queryClient = new QueryClient();
+const App = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  useEffect(() => {
+    if (!isAuthenticated && window.location.pathname !== '/') {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
+
+  return (
+    <div className="app">
+      {isAuthenticated && <Navbar />}
+      <div className="content-container">
+        {isAuthenticated && <Sidebar />}
+        <main className="main-content">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};
 
 export default App;

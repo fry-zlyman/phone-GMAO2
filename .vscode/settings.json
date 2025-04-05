@@ -3,5 +3,6 @@
     "vite.browserType": "system",
     "vite.devCommand": "npm dev",
     "vite.https": true,
-    "vite.showTerminal": true
+    "vite.showTerminal": true,
+    "cmake.sourceDirectory": "C:/Users/h2obe/Documents/GitHub/phone-GMAO2/gmao_solution/windows/flutter"
 }

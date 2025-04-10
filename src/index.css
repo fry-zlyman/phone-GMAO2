@@ -3,6 +3,28 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:scale-[1.02];
+  }
+  
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm;
+  }
+  
+  .content-grid {
+    @apply grid gap-4 p-4 md:grid-cols-2 lg:grid-cols-3;
+  }
+  
+  .section-title {
+    @apply text-2xl font-bold mb-4 text-primary;
+  }
+}
+
+@layer base {
   :root {
     --background: hsl(0, 0%, 100%);
     --foreground: hsl(222.2, 84%, 4.9%);

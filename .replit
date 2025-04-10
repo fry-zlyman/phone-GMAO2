@@ -5,14 +5,15 @@ run = "npm run dev"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "node Server.js"]
+run = ["sh", "-c", "npm run preview"]
+build = ["sh", "-c", "npm run build"]
 
 [[ports]]
 localPort = 8080
 externalPort = 80
 
 [workflows]
-runButton = "Run Flutter Dev"
+runButton = "dev"
 
 [[workflows.workflow]]
 name = "Run Server"
@@ -39,4 +40,13 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd gmao_solution && flutter run -d chrome --web-port 5000 --web-hostname 0.0.0.0"
+args = 'cd gmao_solution && flutter\bin\flutter.bat run -d chrome --web-port 5000 --web-hostname 0.0.0.0'
+
+[[workflows.workflow]]
+name = "dev"
+author = 40675856
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"

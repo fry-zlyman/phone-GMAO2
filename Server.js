@@ -1,50 +1,17 @@
-const http = require ('http');
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-});
-
-server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000/');
-});
-const express = require('express');
-class Person {
-    constructor(name) {
-        this.name = name; // "name" is a property of the class "Person"
-    }
-}
-const person = new Person("Charlie");
-console.log(person.name); // Accesses the "name" property of the "person" object
-  return `Hello, ${name}!`;
-
-
-console.log(greet('World'));
-  express();
-const port = 3000;
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-});
-
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB connecté"))
+    .then(() => console.log("MongoDB connected"))
     .catch(err => console.log(err));
 
-// Schéma des ordres de travail
+// Work Order Schema
 const WorkOrderSchema = new mongoose.Schema({
     titre: String,
     description: String,
@@ -53,7 +20,7 @@ const WorkOrderSchema = new mongoose.Schema({
 });
 const WorkOrder = mongoose.model("WorkOrder", WorkOrderSchema);
 
-// Routes API
+// API Routes
 app.get("/workorders", async (req, res) => {
     try {
         const workOrders = await WorkOrder.find();
@@ -77,4 +44,5 @@ app.post("/workorders", async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log("Serveur en écoute sur le port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));

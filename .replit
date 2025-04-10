@@ -1,0 +1,12 @@
+modules = ["nodejs-20", "cpp-clang14", "web", "c-clang14", "java-graalvm22.3", "nodejs-23", "replit-rtld-loader", "vue-node-20", "nodejs-with-prybar-18", "python-with-prybar-3.10", "bash", "dart-3.5", "dotnet-8.0"]
+run = "npm run dev"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm run dev"]
+
+[[ports]]
+localPort = 8080
+externalPort = 80

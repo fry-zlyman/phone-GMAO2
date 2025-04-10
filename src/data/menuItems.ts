@@ -41,5 +41,27 @@ export const menuItems: MenuSection[] = [
     label: 'Paramètres',
     color: 'bg-muted',
     items: settingsItems
+  },
+  {
+    icon: ClipboardCheck,
+    label: 'Conformité',
+    color: 'bg-orange-500',
+    items: [
+      {
+        icon: CheckSquare,
+        label: 'Listes de contrôle',
+        description: 'Procédures de maintenance'
+      },
+      {
+        icon: Shield,
+        label: 'Protocoles',
+        description: 'Protocoles de sécurité'
+      },
+      {
+        icon: Award,
+        label: 'Certifications',
+        description: 'Gestion des certifications'
+      }
+    ]
   }
 ];

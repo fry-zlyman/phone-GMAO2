@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import './App.css';
+import { Maintenance } from './pages/Maintenance';
+import { ComplianceManager } from './components/compliance/ComplianceManager';
 
 const App = () => {
   const { isAuthenticated } = useAuth();

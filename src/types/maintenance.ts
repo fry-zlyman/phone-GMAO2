@@ -83,3 +83,47 @@ export interface SparePart {
   derniere_mise_a_jour: string;
   statut: 'En stock' | 'Stock faible' | 'Rupture';
 }
+export interface ComplianceChecklist {
+  id: string;
+  title: string;
+  description: string;
+  items: ChecklistItem[];
+  equipment_type: string;
+  created_at: string;
+  updated_at: string;
+  status: 'active' | 'archived';
+}
+
+export interface ChecklistItem {
+  id: string;
+  description: string;
+  required: boolean;
+  completed: boolean;
+  completed_at?: string;
+  completed_by?: string;
+  evidence_required: boolean;
+  evidence_url?: string;
+}
+
+export interface SafetyProtocol {
+  id: string;
+  title: string;
+  description: string;
+  equipment_types: string[];
+  procedures: string[];
+  last_review: string;
+  next_review: string;
+  status: 'active' | 'under_review' | 'archived';
+}
+
+export interface Certification {
+  id: string;
+  title: string;
+  holder: string;
+  issuer: string;
+  issue_date: string;
+  expiry_date: string;
+  status: 'valid' | 'expired' | 'pending';
+  renewal_required: boolean;
+  documents: string[];
+}

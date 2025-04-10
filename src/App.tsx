@@ -1,9 +1,7 @@
+import React, { useState } from 'react';
 
-import { useState } from 'react'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [count, setCount] = useState(0);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -16,7 +14,7 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded shadow">
             <h2 className="text-xl font-bold mb-4">Project 1</h2>
-            <button onClick={() => setCount(c => c + 1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={() => setCount(count + 1)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Count: {count}
             </button>
           </div>
@@ -35,7 +33,7 @@ function App() {
         </div>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

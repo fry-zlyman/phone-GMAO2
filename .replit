@@ -12,7 +12,7 @@ localPort = 8080
 externalPort = 80
 
 [workflows]
-runButton = "Run Flutter"
+runButton = "Run Flutter Dev"
 
 [[workflows.workflow]]
 name = "Run Server"
@@ -31,3 +31,12 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd gmao_solution && flutter run -d web-server --web-port 5000 --web-hostname 0.0.0.0"
+
+[[workflows.workflow]]
+name = "Run Flutter Dev"
+author = 40675856
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd gmao_solution && flutter run -d chrome --web-port 5000 --web-hostname 0.0.0.0"

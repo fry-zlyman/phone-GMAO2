@@ -13,6 +13,7 @@ localPort = 8080
 externalPort = 80
 
 [workflows]
+runButton = "Frontend Dev"
 
 [[workflows.workflow]]
 name = "Run Server"

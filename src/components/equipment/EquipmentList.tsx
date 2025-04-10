@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
+import { QRCodeGenerator } from './QRCodeGenerator';
+import { QRCodeScanner } from './QRCodeScanner';
 import {
   Table,
   TableBody,
@@ -40,13 +42,33 @@ export const EquipmentList: React.FC<EquipmentListProps> = ({ equipment, onClose
     >
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Liste des équipements</h1>
-        <Button 
-          variant="outline"
-          onClick={onClose}
-        >
-          Retour
-        </Button>
+        <div className="flex gap-2">
+          <Button onClick={() => setShowScanner(true)}>
+            Scanner QR Code
+          </Button>
+          <Button 
+            variant="outline"
+            onClick={onClose}
+          >
+            Retour
+          </Button>
+        </div>
       </div>
+      
+      {showScanner && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg w-full max-w-md">
+            <QRCodeScanner />
+            <Button 
+              variant="outline" 
+              onClick={() => setShowScanner(false)}
+              className="m-4"
+            >
+              Fermer
+            </Button>
+          </div>
+        </div>
+      )}
 
       <div className="bg-card rounded-lg shadow-sm">
         <Table>
@@ -76,6 +98,18 @@ export const EquipmentList: React.FC<EquipmentListProps> = ({ equipment, onClose
                   {item.status}
                 </TableCell>
                 <TableCell>{new Date(item.lastMaintenance).toLocaleDateString()}</TableCell>
+                <TableCell>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedEquipment(item);
+                    }}
+                  >
+                    QR Code
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
